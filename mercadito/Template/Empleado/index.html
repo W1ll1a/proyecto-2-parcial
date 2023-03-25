@@ -1,0 +1,19 @@
+<body>
+    {% if not obj %}
+        <h1>no hay categorias</h1>
+    {% endif %}
+    <table>
+        <thead>
+            <th>Codigo</th>
+            <th>Nombre</th>
+        </thead>
+        <tbody>
+        {% for item in obj %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.nombre }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>    
+</body>
