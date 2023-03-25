@@ -1,0 +1,19 @@
+<a href="{% url 'empleado_crear'%}">Nuevo</a>
+<table>
+        <tr>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>edad</th>
+        </tr>
+        {% for data in object_list %}
+        <tr>
+            <td><a href="{% url 'empleado_edit' data.idEmpleado %}">Editar</a></td>
+            <td><a href="{% url 'empleado_eliminar' data.idEmpleado %}">Eliminar</a></td>
+            <td>{{data.idEmpleado}}</td>
+            <td>{{data.EmpleadoNombre}}</td>
+            <td>{{data.EmpleadoEdad}}</td>
+         </tr>
+          {% endfor %}
+     </table>

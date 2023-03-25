@@ -4,7 +4,7 @@ from django.db import models
 class Empleados(models.Model):
     idEmpleado = models.IntegerField(primary_key=True)
     EmpleadoNombre = models.CharField(max_length=50)
-    EmpleadoEdad= models.SmallIntegerField(max_length=2)
+    EmpleadoEdad= models.SmallIntegerField()
     
 
     def __str__(self) :

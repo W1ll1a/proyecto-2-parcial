@@ -1,0 +1,18 @@
+<a href="{% url 'empleado_crear'%}">Nuevo</a>
+
+<table>
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>edad</th>
+        </tr>
+        {% for data in lista %}
+        <tr>
+           
+            <td>{{data.id}}</td>
+            <td>{{data.idEmpleado}}</td>
+            <td>{{data.EmpleadoNombre}}</td>
+            <td>{{data.EmpleadoEdad}}</td>
+         </tr>
+          {% endfor %}
+     </table>

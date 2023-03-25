@@ -1,0 +1,18 @@
+<a href="{% url 'proveedores_crear'%}">Nuevo</a>
+<table>
+        <tr>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            <th>id</th>
+            <th>Nombre</th>
+            
+        </tr>
+        {% for data in object_list %}
+        <tr>
+            <td><a href="{% url 'proveedores_edit' data.idProveedor %}">Editar</a></td>
+            <td><a href="{% url 'proveedores_eliminar' data.idProveedor %}">Eliminar</a></td>
+            <td>{{data.idProveedor}}</td>
+            <td>{{data.nombreProveedor}}</td>
+         </tr>
+          {% endfor %}
+     </table>

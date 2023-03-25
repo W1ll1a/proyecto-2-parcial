@@ -1,0 +1,18 @@
+<a href="{% url 'factura_crear'%}">Nuevo</a>
+<table>
+        <tr>
+            <th>Editar</th>
+            <th>Eliminar</th>
+            <th>id</th>
+            <th>Nombre</th>
+            
+        </tr>
+        {% for data in object_list %}
+        <tr>
+            <td><a href="{% url 'factura_edit' data.idFactura %}">Editar</a></td>
+            <td><a href="{% url 'factura_eliminar' data.idFactura %}">Eliminar</a></td>
+            <td>{{data.idFactura}}</td>
+            <td>{{data.nombreCliente}}</td>
+         </tr>
+          {% endfor %}
+     </table>
