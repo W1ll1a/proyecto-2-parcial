@@ -1,18 +1,68 @@
-<a href="{% url 'cliente_crear'%}">Nuevo</a>
-<table>
-        <tr>
-            <th>Editar</th>
-            <th>Eliminar</th>
-            <th>id</th>
-            <th>Nombre</th>
-            
-        </tr>
-        {% for data in object_list %}
-        <tr>
-            <td><a href="{% url 'cliente_edit' data.idCliente %}">Editar</a></td>
-            <td><a href="{% url 'cliente_eliminar' data.idCliente %}">Eliminar</a></td>
-            <td>{{data.idCliente}}</td>
-            <td>{{data.nombreCliente}}</td>
-         </tr>
-          {% endfor %}
-     </table>
+{% extends "base/base.html" %}
+{% block titulo %}
+  Listado de Clientes
+{%endblock titulo%}
+{% block contenido %}
+<div>
+    <a href="{% url 'cliente_crear'%}" class="btn btn-succes">Nuevo</a>
+</div>
+<div class ='card'>
+    <div class="card-header">
+        Listado de Clientes
+    </div>  
+    <div class="card-body">
+        <table id ="Clientes" class="table table-striped" style ="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>telefono</th>
+                    <th>email</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in object_list %}
+                <tr>
+                    <td><a href="{% url 'cliente_edit' data.idCliente %}" class="btn btn-info">Editar</a></td>
+                    <td><a href="{% url 'cliente_eliminar' data.idCliente %}" class="btn btn-danger">Eliminar</a></td>
+                    <td>{{data.idCliente}}</td>
+                    <td>{{data.nombreCliente}}</td>
+                    <td>{{data.ClienteTelefono}}</td>
+                    <td>{{data.ClienteCorreo}}</td>
+                    
+                 </tr>
+                  {% endfor %}
+            </tbody>
+         </table>
+    </div>
+</div>
+{% endblock contenido %}
+{% block js_page%}
+   
+<script>
+    $(document).ready(function() {
+              $('#Cliente').DataTable( {
+          paging:true,
+          scrollY:true,
+          scrollX:true,
+          scrollCollapse:true,
+          pagingType: 'full_numbers',
+          dom: 'Blfrtip',
+          buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],
+          lengthMenu: [
+                          [ 10, 25, 50, -1 ],
+                          [ '10 Filas', '25 Filas ', '50 Filas', 'Mostrar todo' ]
+                      ],
+          "language": {
+              "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+          }});
+          });
+  
+  </script>
+  {% endblock js_page %}
+

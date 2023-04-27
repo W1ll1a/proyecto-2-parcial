@@ -1,5 +1,66 @@
+{% extends "base/base.html" %}
+{% block titulo %}
+  Nuevo Proveedor
+{%endblock titulo%}
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+      Nuevo Proveedor
+    </div>
+    <div class="card-body">
 <form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Guardar</button>
-</form>
+   {% csrf_token %}
+            
+            <div class="form-group row">
+                <div class="form-group col-sm-12">
+                    <label for="name">Codigo de Proveedor: </label>
+                     <div class="input-group">
+                       <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.idProveedor}} 
+                    </div>
+                </div>
+             
+        
+                <div class="form-group col-sm-12">
+                    <label for="name">Nombre de proveedor: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.nombreProveedor}}
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <label for="name">id Proveedor: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.idProveedor}}
+                    </div>
+                </div>
+                
+                <div class="form-group col-sm-12">
+                    <label for="name">Direccion del producto: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.ProveedorDireccion}}
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="name">Telefono proveedor: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.ProveedorTelefono}}
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="name">Correo del proveedor: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.ProveedorCorreo}}
+                    </div>
+                </div>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-success btn-lg btn-block">Guardar</button>
+        </form>
+    </div>
+</div>     
+{% endblock contenido %}

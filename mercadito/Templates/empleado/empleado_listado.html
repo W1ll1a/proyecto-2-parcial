@@ -1,19 +1,72 @@
-<a href="{% url 'empleado_crear'%}">Nuevo</a>
-<table>
-        <tr>
-            <th>Editar</th>
-            <th>Eliminar</th>
-            <th>id</th>
-            <th>Nombre</th>
-            <th>edad</th>
-        </tr>
-        {% for data in object_list %}
-        <tr>
-            <td><a href="{% url 'empleado_edit' data.idEmpleado %}">Editar</a></td>
-            <td><a href="{% url 'empleado_eliminar' data.idEmpleado %}">Eliminar</a></td>
-            <td>{{data.idEmpleado}}</td>
-            <td>{{data.EmpleadoNombre}}</td>
-            <td>{{data.EmpleadoEdad}}</td>
-         </tr>
-          {% endfor %}
-     </table>
+{% extends "base/base.html" %}
+{% block titulo %}
+  Listado de Empleados
+{%endblock titulo%}
+{% block contenido %}
+<div>
+    <a href="{% url 'cliente_crear'%}" class="btn btn-succes">Nuevo</a>
+</div>
+<div class ='card'>
+    <div class="card-header">
+        Listado de Empleados
+    </div>  
+    <div class="card-body">
+        <table id ="Empleados" class="table table-striped" style ="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Salario</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in object_list %}
+                <tr>
+                    <td><a href="{% url 'empleado_edit' data.idEmpleado %}" class="btn btn-info">Editar</a></td>
+                    <td><a href="{% url 'empleado_eliminar' data.idEmpleado %}" class="btn btn-danger">Eliminar</a></td>
+                    <td>{{data.idEmpleado}}</td>
+                    <td>{{data.EmpleadoNombre}}</td>
+                    <td>{{data.EmpleadoEdad}}</td>
+                    <td>{{data.EmpleadoTel}}</td>
+                    <td>{{data.EmpleadoCorreo}}</td>
+                    <td>{{data.EmpleadoSalario}}</td>
+
+                 </tr>
+                  {% endfor %}
+            </tbody>
+         </table>
+    </div>
+</div>
+{% endblock contenido %}
+{% block js_page%}
+   
+<script>
+    $(document).ready(function() {
+              $('#Empleados').DataTable( {
+          paging:true,
+          scrollY:true,
+          scrollX:true,
+          scrollCollapse:true,
+          pagingType: 'full_numbers',
+          dom: 'Blfrtip',
+          buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],
+          lengthMenu: [
+                          [ 10, 25, 50, -1 ],
+                          [ '10 Filas', '25 Filas ', '50 Filas', 'Mostrar todo' ]
+                      ],
+          "language": {
+              "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+          }});
+          });
+  
+  </script>
+  {% endblock js_page %}
+

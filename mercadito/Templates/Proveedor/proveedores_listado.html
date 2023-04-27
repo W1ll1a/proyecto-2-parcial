@@ -1,18 +1,71 @@
-<a href="{% url 'proveedores_crear'%}">Nuevo</a>
-<table>
-        <tr>
-            <th>Editar</th>
-            <th>Eliminar</th>
-            <th>id</th>
-            <th>Nombre</th>
-            
-        </tr>
-        {% for data in object_list %}
-        <tr>
-            <td><a href="{% url 'proveedores_edit' data.idProveedor %}">Editar</a></td>
-            <td><a href="{% url 'proveedores_eliminar' data.idProveedor %}">Eliminar</a></td>
-            <td>{{data.idProveedor}}</td>
-            <td>{{data.nombreProveedor}}</td>
-         </tr>
-          {% endfor %}
-     </table>
+{% extends "base/base.html" %}
+{% block titulo %}
+  Listado de Productos
+{%endblock titulo%}
+{% block contenido %}
+<div>
+    <a href="{% url 'proveedores_crear'%}" class="btn btn-succes">Nuevo</a>
+</div>
+<div class ='card'>
+    <div class="card-header">
+        Listado de Proveedores
+    </div>  
+    <div class="card-body">
+        <table id ="Productos" class="table table-striped" style ="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                    <th>id</th>
+                    <th>Nombre del proveedor</th>
+                    <th>Direccion</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in object_list %}
+                <tr>
+                    <td><a href="{% url 'proveedores_eliminar' data.idProveedor %}" class="btn btn-danger">Eliminar</a></td>
+                    <td><a href="{% url 'proveedores_edit' data.idProveedor %}" class="btn btn-info">Editar</a></td>
+                    <td>{{data.idProveedor}}</td>
+                    <td>{{data.nombreProveedor}}</td>
+                    <td>{{data.ProveedorDireccion}}</td>
+                    <td>{{data.ProveedorTelefono}}</td>
+                    <td>{{data.ProveedorCorreo}}</td>
+                    
+
+                 </tr>
+                  {% endfor %}
+            </tbody>
+         </table>
+    </div>
+</div>
+{% endblock contenido %}
+{% block js_page%}
+   
+<script>
+    $(document).ready(function() {
+              $('#Proveedores').DataTable( {
+          paging:true,
+          scrollY:true,
+          scrollX:true,
+          scrollCollapse:true,
+          pagingType: 'full_numbers',
+          dom: 'Blfrtip',
+          buttons: [
+              'copy', 'csv', 'excel', 'pdf', 'print'
+          ],
+          lengthMenu: [
+                          [ 10, 25, 50, -1 ],
+                          [ '10 Filas', '25 Filas ', '50 Filas', 'Mostrar todo' ]
+                      ],
+          "language": {
+              "url": "//cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"
+          }});
+          });
+  
+  </script>
+
+  {% endblock js_page %}

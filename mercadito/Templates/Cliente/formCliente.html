@@ -1,5 +1,52 @@
+{% extends "base/base.html" %}
+{% block titulo %}
+  Nuevo cliente
+{%endblock titulo%}
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+      Nuevo Cliente
+    </div>
+    <div class="card-body">
 <form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Guardar</button>
-</form>
+   {% csrf_token %}
+            
+            <div class="form-group row">
+                <div class="form-group col-sm-12">
+                    <label for="name">Codigo de Cliente: </label>
+                     <div class="input-group">
+                       <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.idCliente}} 
+                    </div>
+                </div>
+             
+        
+                <div class="form-group col-sm-12">
+                    <label for="name">Nombre de Cliente: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.nombreCliente}}
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <label for="name">Telefono de Cliente: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.ClienteTelefono}}
+                    </div>
+                </div>
+                
+                <div class="form-group col-sm-12">
+                    <label for="name">Correo de Cliente: </label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-lg text-info" aria-hidden="true"></i></div>
+                            {{ form.ClienteCorreo}}
+                    </div>
+                </div>
+            </div>
+            <button type="submit" value="Submit" class="btn btn-success btn-lg btn-block">Guardar</button>
+        </form>
+    </div>
+</div>     
+{% endblock contenido %}
