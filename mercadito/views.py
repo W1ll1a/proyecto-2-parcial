@@ -11,8 +11,6 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 #def expediente_index(request):
 #   return HttpResponse("Cargando vistas")
-class Home(generic.TemplateView):
-    template_name = 'base/base.html'
 
 class EmpleadoCrear(CreateView):
     model = Empleados
